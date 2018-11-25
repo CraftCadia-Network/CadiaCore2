@@ -1,0 +1,5 @@
+name: CadiaCore2
+author: crus3r
+version: 2.0
+main: me.crus3r.cadiacore2.CadiaCore2
+description: Core Plugin written in Java by Sam Taber (crus3r)
