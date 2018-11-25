@@ -8,23 +8,17 @@ commands:
     description: Enables/Disables Flight for a/the player.
   heal:
     description: Heals a/the player.
-  gamemode 1:
+  gamemode:
     description: Sets a players gamemode.
-  gmc:
-    description: Sets a players gamemode.
-  gamemode creative:
-    description: Sets a players gamemode.
-  gm c:
-    description: Sets a players gamemode.
-  gm 1:
-    description: Sets a players gamemode.
-  gamemode 0:
-    description: Sets a players gamemode.
-  gms:
-    description: Sets a players gamemode.
-  gamemode survival:
-    description: Sets a players gamemode.
-  gm 0:
-    description: Sets a players gamemode.
-  gm s:
-    description: Sets a players gamemode.
+  hat:
+    description: Sets a players hat.
+  tp:
+    description: Teleports a player to a target player.
+  workbench:
+    description: Opens up a portable workbench.
+  enderchest:
+    description: Opens up a player's ender chest.
+  ec:
+    description: Opens up a player's ender chest.
+  ender:
+    description: Opens up a player's ender chest.

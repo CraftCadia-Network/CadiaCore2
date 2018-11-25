@@ -20,7 +20,6 @@ public class FlyCommand implements CommandExecutor{
 				if(player.isFlying() == false) {
 					
 					if(args.length == 0) {
-						//heal = 0 args; /heal crus3r = 1 args;
 						player.setAllowFlight(true);
 						player.setFlying(true);
 						player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Enabled for " + ChatColor.YELLOW + player.getName());
@@ -36,7 +35,6 @@ public class FlyCommand implements CommandExecutor{
 				}else if(player.isFlying() == true) {
 					
 					if(args.length == 0) {
-						//heal = 0 args; /heal crus3r = 1 args;
 						player.setAllowFlight(false);
 						player.setFlying(false);
 						player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Disabled for " + ChatColor.YELLOW + player.getName());
@@ -64,6 +62,10 @@ public class FlyCommand implements CommandExecutor{
 				
 				
 			}
+			
+		}else {
+			
+			player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "You do not have permission!");
 			
 		}
 			
