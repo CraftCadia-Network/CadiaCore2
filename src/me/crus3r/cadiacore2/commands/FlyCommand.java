@@ -13,26 +13,59 @@ public class FlyCommand implements CommandExecutor{
 		
 		Player player = (Player) sender;
 		if (sender instanceof Player) {
-		
+		if(label.equalsIgnoreCase("fly")) {
+			
 			if(player.hasPermission("CadiaCore2.fly")) {
 				
-				if(player.isFlying() == true) {
+				if(player.isFlying() == false) {
 					
-					player.setAllowFlight(false);
-					player.setFlying(false);
-					player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Disabled");
-				}else {
+					if(args.length == 0) {
+						//heal = 0 args; /heal crus3r = 1 args;
+						player.setAllowFlight(true);
+						player.setFlying(true);
+						player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Enabled for " + ChatColor.YELLOW + player.getName());
+					}else if(args.length == 1) {
+						
+						Player targetPlayer = player.getServer().getPlayer(args[0]);
+						targetPlayer.setAllowFlight(true);
+						targetPlayer.setFlying(true);
+						player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Enabled for " + ChatColor.YELLOW + player.getName());
+						targetPlayer.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Enabled for " + ChatColor.YELLOW + player.getName());
+					}
 					
+				}else if(player.isFlying() == true) {
 					
-					player.setAllowFlight(true);
-					player.setFlying(true);
-					player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Enabled");
+					if(args.length == 0) {
+						//heal = 0 args; /heal crus3r = 1 args;
+						player.setAllowFlight(false);
+						player.setFlying(false);
+						player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Disabled for " + ChatColor.YELLOW + player.getName());
+					}else if(args.length == 1) {
+						
+						Player targetPlayer = player.getServer().getPlayer(args[0]);
+						if(targetPlayer.isOnline() == true) {
+							
+							targetPlayer.setAllowFlight(false);
+							targetPlayer.setFlying(false);
+							player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Disabled for " + ChatColor.YELLOW + player.getName());
+							targetPlayer.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Fly Disabled for " + ChatColor.YELLOW + player.getName());
+							
+						}else if(targetPlayer.isOnline() == false) {
+							
+							player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Target player is not online.");
+							
+						}
+						
+					}
+					
 				}
+				
 				
 				
 				
 			}
 			
+		}
 			
 			
 		}

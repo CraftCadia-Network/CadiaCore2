@@ -3,3 +3,28 @@ author: crus3r
 version: 2.0
 main: me.crus3r.cadiacore2.CadiaCore2
 description: Core Plugin written in Java by Sam Taber (crus3r)
+commands:
+  fly:
+    description: Enables/Disables Flight for a/the player.
+  heal:
+    description: Heals a/the player.
+  gamemode 1:
+    description: Sets a players gamemode.
+  gmc:
+    description: Sets a players gamemode.
+  gamemode creative:
+    description: Sets a players gamemode.
+  gm c:
+    description: Sets a players gamemode.
+  gm 1:
+    description: Sets a players gamemode.
+  gamemode 0:
+    description: Sets a players gamemode.
+  gms:
+    description: Sets a players gamemode.
+  gamemode survival:
+    description: Sets a players gamemode.
+  gm 0:
+    description: Sets a players gamemode.
+  gm s:
+    description: Sets a players gamemode.
