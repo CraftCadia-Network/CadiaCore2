@@ -8,6 +8,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.crus3r.cadiacore2.commands.EnderchestCommand;
+import me.crus3r.cadiacore2.commands.FeedCommand;
 import me.crus3r.cadiacore2.commands.FlyCommand;
 import me.crus3r.cadiacore2.commands.GamemodeCommand;
 import me.crus3r.cadiacore2.commands.HatCommand;
@@ -31,7 +32,9 @@ public class CadiaCore2 extends JavaPlugin{
 		this.getCommand("tp").setExecutor((CommandExecutor)new TpCommand());
 		this.getCommand("workbench").setExecutor((CommandExecutor)new WorkbenchCommand());
 		this.getCommand("enderchest").setExecutor((CommandExecutor)new EnderchestCommand());
+		//Referencing a public void method because of all the commands required. Its alot :P
 		enderCmd();
+		this.getCommand("feed").setExecutor((CommandExecutor)new FeedCommand());
 	}
 	
 	@Override

@@ -22,3 +22,5 @@ commands:
     description: Opens up a player's ender chest.
   ender:
     description: Opens up a player's ender chest.
+  feed:
+    description: Feeds a/the player.

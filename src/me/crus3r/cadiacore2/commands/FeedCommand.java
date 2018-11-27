@@ -19,13 +19,14 @@ public class FeedCommand implements CommandExecutor{
 				if(args.length == 0) {
 					
 					player.setFoodLevel(20);
+					player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Your hunger has been satisfied.");
 					
 				}else if(args.length == 1) {
 					
 					Player targetPlayer = player.getServer().getPlayer(args[0]);
 					targetPlayer.setFoodLevel(20);
 					player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.YELLOW + targetPlayer.getName() + ChatColor.GREEN + "'s hunger was sated.");
-					player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Your hunger no longer exists.");
+					targetPlayer.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Your hunger no longer exists.");
 				}
 				
 			}
