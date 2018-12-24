@@ -1,5 +1,7 @@
 package me.crus3r.cadiacore2;
 
+import java.util.HashMap;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
@@ -8,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,42 +31,24 @@ public class CadiaCore2 extends JavaPlugin implements Listener{
 
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static CadiaCore2 plugin;
-	
-	public void log(String string) {
-		
-		System.out.println(string);
-		
-	}
-	
-	
-	public void registerListeners() {
-		
-		
-		
-	}
-	
+	public HashMap<UUID,PermissionAttachment> playerPermissions = new HashMap<>();
 	
 	@Override
 	public void onEnable() {
-			
 		plugin = this;
+		this.getConfig().options().copyDefaults(true);
+		this.saveConfig();
 		this.getServer().getPluginManager().registerEvents(this, this);
-		
 		commandExecutor();
-		registerListeners();
 		this.saveDefaultConfig();
-		getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "--------------------oOo--------------------\n\nCadiaCore2 Loaded.\n\n--------------------oOo--------------------");
-		
+		getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "--------------------oOo--------------------\n\nCadiaCore2 Loaded.\n\n--------------------oOo--------------------");	
 	}
-	
 	@Override
 	public void onDisable() {
 		PluginDescriptionFile pdfFile = this.getDescription();
 		getServer().getConsoleSender().sendMessage(ChatColor.RED + "--------------------oOo--------------------\n\nCadiaCore2 Disabled..\n\n--------------------oOo--------------------");
 		
 	}
-		
-
 	public void commandExecutor() {
 		this.getCommand("heal").setExecutor((CommandExecutor)new HealCommand());
 		//Referencing a public void method because of all the commands required. I will do this often
@@ -77,22 +63,19 @@ public class CadiaCore2 extends JavaPlugin implements Listener{
 		enderCmd();
 		this.getCommand("feed").setExecutor((CommandExecutor)new FeedCommand());
 	}
-	
-public void broadcastCmd() {
-	
+	public void broadcastCmd() {
 		this.getCommand("broadcast").setExecutor((CommandExecutor)new BroadcastCommand());
 		this.getCommand("shout").setExecutor((CommandExecutor)new BroadcastCommand());
-	
 }
-	
 	public void enderCmd() {
 		
 		this.getCommand("enderchest").setExecutor((CommandExecutor)new EnderchestCommand());
 		this.getCommand("ender").setExecutor((CommandExecutor)new EnderchestCommand());
 		this.getCommand("ec").setExecutor((CommandExecutor)new EnderchestCommand());
-		
 	}
-	
+	//
+	//		E	v	e	n	t		H	a	n	d	l	e	r 	for permissions
+	//
 	@EventHandler
 	public void breakBlock(BlockBreakEvent event) {
 		
@@ -105,7 +88,36 @@ public void broadcastCmd() {
 		
 	}
 	
+	@EventHandler
+	public void join(PlayerJoinEvent event) {
+		
+		Player player = event.getPlayer();
+		setupPermissions(player);
+		
+	}
 	
+	
+	public void setupPermissions(Player player) {
+		
+		PermissionAttachment attachment = player.addAttachment(this);
+		this.playerPermissions.put(player.getUniqueId(), attachment);
+		permissionsSetter(player.getUniqueId());
+	}
+	
+	private void permissionsSetter(UUID uuid) {
+		
+		PermissionAttachment attachment = this.playerPermissions.get(uuid);
+		for(String groups : this.getConfig().getConfigurationSection("groups").getKeys(false)) {
+			
+			for(String permissions : this.getConfig().getStringList("Groups." + groups + ".permissions")) {
+				
+				attachment.setPermission(permissions, true);
+				
+			}
+			
+		}
+		
+	}
 	
 	
 }
