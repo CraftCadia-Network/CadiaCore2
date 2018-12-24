@@ -4,9 +4,15 @@ import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
+
+import me.crus3r.cadiacore2.permissions.eventListener;
 import me.crus3r.cadiacore2.commands.BroadcastCommand;
 import me.crus3r.cadiacore2.commands.EnderchestCommand;
 import me.crus3r.cadiacore2.commands.FeedCommand;
@@ -17,7 +23,7 @@ import me.crus3r.cadiacore2.commands.HealCommand;
 import me.crus3r.cadiacore2.commands.TpCommand;
 import me.crus3r.cadiacore2.commands.WorkbenchCommand;
 
-public class CadiaCore2 extends JavaPlugin{
+public class CadiaCore2 extends JavaPlugin implements Listener{
 
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static CadiaCore2 plugin;
@@ -39,10 +45,25 @@ public class CadiaCore2 extends JavaPlugin{
 	@Override
 	public void onEnable() {
 			
+		plugin = this;
+		this.getServer().getPluginManager().registerEvents(this, this);
 		
+		commandExecutor();
 		registerListeners();
 		this.saveDefaultConfig();
 		getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "--------------------oOo--------------------\n\nCadiaCore2 Loaded.\n\n--------------------oOo--------------------");
+		
+	}
+	
+	@Override
+	public void onDisable() {
+		PluginDescriptionFile pdfFile = this.getDescription();
+		getServer().getConsoleSender().sendMessage(ChatColor.RED + "--------------------oOo--------------------\n\nCadiaCore2 Disabled..\n\n--------------------oOo--------------------");
+		
+	}
+		
+
+	public void commandExecutor() {
 		this.getCommand("heal").setExecutor((CommandExecutor)new HealCommand());
 		//Referencing a public void method because of all the commands required. I will do this often
 		broadcastCmd();
@@ -56,14 +77,6 @@ public class CadiaCore2 extends JavaPlugin{
 		enderCmd();
 		this.getCommand("feed").setExecutor((CommandExecutor)new FeedCommand());
 	}
-	
-	@Override
-	public void onDisable() {
-		PluginDescriptionFile pdfFile = this.getDescription();
-		getServer().getConsoleSender().sendMessage(ChatColor.RED + "--------------------oOo--------------------\n\nCadiaCore2 Disabled..\n\n--------------------oOo--------------------");
-		
-	}
-	
 	
 public void broadcastCmd() {
 	
@@ -79,5 +92,20 @@ public void broadcastCmd() {
 		this.getCommand("ec").setExecutor((CommandExecutor)new EnderchestCommand());
 		
 	}
+	
+	@EventHandler
+	public void breakBlock(BlockBreakEvent event) {
+		
+		Player player = event.getPlayer();
+		if(!player.hasPermission("cadiacore2.breakblock")) {
+			
+			event.setCancelled(true);
+			player.sendMessage(ChatColor.LIGHT_PURPLE + "[" + ChatColor.AQUA + "CadiaHQ" + ChatColor.LIGHT_PURPLE + "] " + ChatColor.GREEN + "Hey! You cant do that!");
+		}
+		
+	}
+	
+	
+	
 	
 }

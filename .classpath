@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/samtaber/Downloads/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sam Taber/Documents/.CraftCadia Network/Kingdoms Test/Hub/spigot.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
