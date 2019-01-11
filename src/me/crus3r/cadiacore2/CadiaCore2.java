@@ -26,6 +26,7 @@ import me.crus3r.cadiacore2.commands.HatCommand;
 import me.crus3r.cadiacore2.commands.HealCommand;
 import me.crus3r.cadiacore2.commands.TpCommand;
 import me.crus3r.cadiacore2.commands.WorkbenchCommand;
+import me.crus3r.cadiacore2.commands.vanishCommand;
 
 public class CadiaCore2 extends JavaPlugin implements Listener{
 
@@ -62,6 +63,9 @@ public class CadiaCore2 extends JavaPlugin implements Listener{
 		//Referencing a public void method because of all the commands required. Its alot :P
 		enderCmd();
 		this.getCommand("feed").setExecutor((CommandExecutor)new FeedCommand());
+		this.getCommand("vanish").setExecutor((CommandExecutor)new vanishCommand());
+		this.getCommand("v").setExecutor((CommandExecutor)new vanishCommand());
+
 	}
 	public void broadcastCmd() {
 		this.getCommand("broadcast").setExecutor((CommandExecutor)new BroadcastCommand());

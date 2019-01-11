@@ -8,8 +8,6 @@ commands:
     description: Enables/Disables Flight for a/the player.
   heal:
     description: Heals a/the player.
-  gamemode:
-    description: Sets a players gamemode.
   hat:
     description: Sets a players hat.
   tp:
@@ -28,3 +26,7 @@ commands:
     description: Broadcasts a message.
   shout:
     description: Broadcasts a message.
+  vanish:
+    description: Vanishs a player.
+  v:
+    description: Vanishs a player.
