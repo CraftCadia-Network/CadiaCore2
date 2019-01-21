@@ -27,6 +27,8 @@ import me.crus3r.cadiacore2.commands.HealCommand;
 import me.crus3r.cadiacore2.commands.TpCommand;
 import me.crus3r.cadiacore2.commands.WorkbenchCommand;
 import me.crus3r.cadiacore2.commands.vanishCommand;
+import me.crus3r.cadiacore2.events.PlayerJoin;
+import me.crus3r.cadiacore2.files.MOTDFile;
 
 public class CadiaCore2 extends JavaPlugin implements Listener{
 
@@ -34,49 +36,49 @@ public class CadiaCore2 extends JavaPlugin implements Listener{
 	public static CadiaCore2 plugin;
 	public HashMap<UUID,PermissionAttachment> playerPermissions = new HashMap<>();
 	
+	public MOTDFile motdFile;
+	
 	@Override
 	public void onEnable() {
 		plugin = this;
 		this.getConfig().options().copyDefaults(true);
 		this.saveConfig();
-		this.getServer().getPluginManager().registerEvents(this, this);
-		commandExecutor();
+		this.motdFile = new MOTDFile(this);
+		this.registerEvents();
+		this.registerCommands();
 		this.saveDefaultConfig();
 		getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "--------------------oOo--------------------\n\nCadiaCore2 Loaded.\n\n--------------------oOo--------------------");	
 	}
+	
 	@Override
 	public void onDisable() {
-		PluginDescriptionFile pdfFile = this.getDescription();
 		getServer().getConsoleSender().sendMessage(ChatColor.RED + "--------------------oOo--------------------\n\nCadiaCore2 Disabled..\n\n--------------------oOo--------------------");
 		
 	}
-	public void commandExecutor() {
+	
+	public void registerEvents() {
+		this.getServer().getPluginManager().registerEvents(this, this);
+		this.getServer().getPluginManager().registerEvents(new PlayerJoin(this), this);
+
+	}
+	
+	public void registerCommands() {
 		this.getCommand("heal").setExecutor((CommandExecutor)new HealCommand());
-		//Referencing a public void method because of all the commands required. I will do this often
-		broadcastCmd();
 		this.getCommand("fly").setExecutor((CommandExecutor)new FlyCommand());
 		this.getCommand("gamemode").setExecutor((CommandExecutor)new GamemodeCommand());
 		this.getCommand("hat").setExecutor((CommandExecutor)new HatCommand());
 		this.getCommand("tp").setExecutor((CommandExecutor)new TpCommand());
 		this.getCommand("workbench").setExecutor((CommandExecutor)new WorkbenchCommand());
-		this.getCommand("enderchest").setExecutor((CommandExecutor)new EnderchestCommand());
-		//Referencing a public void method because of all the commands required. Its alot :P
-		enderCmd();
 		this.getCommand("feed").setExecutor((CommandExecutor)new FeedCommand());
 		this.getCommand("vanish").setExecutor((CommandExecutor)new vanishCommand());
-		this.getCommand("v").setExecutor((CommandExecutor)new vanishCommand());
+		this.getCommand("broadcast").setExecutor((CommandExecutor)new BroadcastCommand());
+		this.getCommand("enderchest").setExecutor((CommandExecutor)new EnderchestCommand());
+
 
 	}
 	public void broadcastCmd() {
-		this.getCommand("broadcast").setExecutor((CommandExecutor)new BroadcastCommand());
-		this.getCommand("shout").setExecutor((CommandExecutor)new BroadcastCommand());
+
 }
-	public void enderCmd() {
-		
-		this.getCommand("enderchest").setExecutor((CommandExecutor)new EnderchestCommand());
-		this.getCommand("ender").setExecutor((CommandExecutor)new EnderchestCommand());
-		this.getCommand("ec").setExecutor((CommandExecutor)new EnderchestCommand());
-	}
 	//
 	//		E	v	e	n	t		H	a	n	d	l	e	r 	for permissions
 	//

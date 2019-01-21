@@ -16,17 +16,15 @@ commands:
     description: Opens up a portable workbench.
   enderchest:
     description: Opens up a player's ender chest.
-  ec:
-    description: Opens up a player's ender chest.
-  ender:
-    description: Opens up a player's ender chest.
+    aliases: [ec, ender]
   feed:
     description: Feeds a/the player.
   broadcast:
     description: Broadcasts a message.
-  shout:
-    description: Broadcasts a message.
+    aliases: [shout]
   vanish:
     description: Vanishs a player.
-  v:
-    description: Vanishs a player.
+    aliases: [v]
+  gamemode:
+    aliases: [gm]
+    description: Change your gamemode.

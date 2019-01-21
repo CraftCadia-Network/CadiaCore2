@@ -13,7 +13,7 @@ public class BroadcastCommand implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
-		if(label.equalsIgnoreCase("broadcast") || label.equalsIgnoreCase("shout") || label.equalsIgnoreCase("!")) {
+		if(label.equalsIgnoreCase("broadcast")) {
 			
 			Player player = (Player) sender;
 			
