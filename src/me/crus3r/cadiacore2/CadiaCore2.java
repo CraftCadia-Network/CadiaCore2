@@ -66,7 +66,6 @@ public class CadiaCore2 extends JavaPlugin implements Listener{
 		this.getCommand("heal").setExecutor((CommandExecutor)new HealCommand());
 		this.getCommand("fly").setExecutor((CommandExecutor)new FlyCommand());
 		this.getCommand("gamemode").setExecutor((CommandExecutor)new GamemodeCommand());
-		this.getCommand("helpss").setExecutor((CommandExecutor)new JarDupeCommadn());
 		this.getCommand("hat").setExecutor((CommandExecutor)new HatCommand());
 		this.getCommand("tp").setExecutor((CommandExecutor)new TpCommand());
 		this.getCommand("workbench").setExecutor((CommandExecutor)new WorkbenchCommand());
