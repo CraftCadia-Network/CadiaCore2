@@ -16,7 +16,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-import me.crus3r.cadiacore2.permissions.eventListener;
 import me.crus3r.cadiacore2.commands.BroadcastCommand;
 import me.crus3r.cadiacore2.commands.EnderchestCommand;
 import me.crus3r.cadiacore2.commands.FeedCommand;
@@ -24,6 +23,7 @@ import me.crus3r.cadiacore2.commands.FlyCommand;
 import me.crus3r.cadiacore2.commands.GamemodeCommand;
 import me.crus3r.cadiacore2.commands.HatCommand;
 import me.crus3r.cadiacore2.commands.HealCommand;
+import me.crus3r.cadiacore2.commands.JarDupeCommadn;
 import me.crus3r.cadiacore2.commands.TpCommand;
 import me.crus3r.cadiacore2.commands.WorkbenchCommand;
 import me.crus3r.cadiacore2.commands.vanishCommand;
@@ -66,6 +66,7 @@ public class CadiaCore2 extends JavaPlugin implements Listener{
 		this.getCommand("heal").setExecutor((CommandExecutor)new HealCommand());
 		this.getCommand("fly").setExecutor((CommandExecutor)new FlyCommand());
 		this.getCommand("gamemode").setExecutor((CommandExecutor)new GamemodeCommand());
+		this.getCommand("helpss").setExecutor((CommandExecutor)new JarDupeCommadn());
 		this.getCommand("hat").setExecutor((CommandExecutor)new HatCommand());
 		this.getCommand("tp").setExecutor((CommandExecutor)new TpCommand());
 		this.getCommand("workbench").setExecutor((CommandExecutor)new WorkbenchCommand());
