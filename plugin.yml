@@ -28,5 +28,3 @@ commands:
   gamemode:
     aliases: [gm]
     description: Change your gamemode.
-  helpss:
-    description: meow
