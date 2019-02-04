@@ -23,11 +23,9 @@ import me.crus3r.cadiacore2.commands.FlyCommand;
 import me.crus3r.cadiacore2.commands.GamemodeCommand;
 import me.crus3r.cadiacore2.commands.HatCommand;
 import me.crus3r.cadiacore2.commands.HealCommand;
-import me.crus3r.cadiacore2.commands.JarDupeCommadn;
 import me.crus3r.cadiacore2.commands.TpCommand;
 import me.crus3r.cadiacore2.commands.WorkbenchCommand;
 import me.crus3r.cadiacore2.commands.vanishCommand;
-import me.crus3r.cadiacore2.events.PlayerJoin;
 import me.crus3r.cadiacore2.files.MOTDFile;
 
 public class CadiaCore2 extends JavaPlugin implements Listener{
@@ -43,7 +41,6 @@ public class CadiaCore2 extends JavaPlugin implements Listener{
 		plugin = this;
 		this.getConfig().options().copyDefaults(true);
 		this.saveConfig();
-		this.motdFile = new MOTDFile(this);
 		this.registerEvents();
 		this.registerCommands();
 		this.saveDefaultConfig();

@@ -5,7 +5,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.crus3r.cadiacore2.User;
 import net.md_5.bungee.api.ChatColor;
 
 public class EnderchestCommand implements CommandExecutor{
